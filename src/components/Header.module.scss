@@ -1,0 +1,189 @@
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  background: rgba(20, 32, 46, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  // 스크롤 전 최초 렌더링에서도 backdrop-filter가 바로 적용되도록 별도 합성 레이어로 강제
+  transform: translateZ(0);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s, border-color 0.3s;
+
+  // 로그인/회원가입/방명록처럼 사진 배경 위에서는 뒷배경이 비쳐 보이는 유리질감으로 자연스럽게 녹아들게
+  &.light {
+    background: rgba(255, 255, 255, 0.32);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 2px 12px rgba(30, 50, 70, 0.06);
+
+    .logo {
+      color: #1e2b38;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+    }
+
+    nav a {
+      color: #33465a;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+
+      &::after {
+        background: #2d5c8a;
+      }
+
+      &:hover {
+        color: #1e2b38;
+      }
+    }
+
+    .active {
+      color: #1e2b38 !important;
+    }
+
+    .login {
+      color: #33465a;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.25);
+        color: #1e2b38;
+      }
+    }
+
+    .username {
+      color: #33465a;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+    }
+
+    .signup {
+      color: #fff;
+      background: #2d5c8a;
+
+      &:hover {
+        background: #244a70;
+      }
+    }
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  padding: 0 24px;
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav a {
+  position: relative;
+  padding: 4px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.25s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #6cb2f0;
+    transition: width 0.25s ease;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.active {
+  color: #fff !important;
+
+  &::after {
+    width: 100%;
+  }
+}
+
+.login {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+
+.signup {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #14202e;
+  background: #fff;
+  border-radius: 6px;
+  transition: background 0.25s, transform 0.15s;
+
+  &:hover {
+    background: #e8f1fb;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}

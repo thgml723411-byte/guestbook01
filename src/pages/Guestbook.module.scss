@@ -1,0 +1,451 @@
+// 사이트 전역(로그인/회원가입)과 동일한 블루-잉크 팔레트로 통일
+$ink: #1e2b38;
+$muted: #5c7185;
+$accent: #2d5c8a;
+$accent-soft: rgba(45, 92, 138, 0.1);
+$border: rgba(30, 50, 70, 0.1);
+$card-radius: 20px;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page {
+  min-height: 100vh;
+  padding: 56px 24px 80px;
+  color: $ink;
+
+  // 로그인/회원가입 페이지처럼 배경 사진을 그대로 보여주고, 카드 자체의 반투명 유리질감으로 대비를 줌
+  // background-attachment: fixed는 헤더의 backdrop-filter가 스크롤 전까지 초기 렌더링에 반영되지 않는
+  // 브라우저 버그를 유발해서 scroll로 둠
+  background-image: url('/img/back7.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+.intro {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  background: $accent;
+  border-radius: 999px;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: $ink;
+  text-shadow: 0 2px 16px rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 640px) {
+    font-size: 26px;
+  }
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: $muted;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.8);
+}
+
+// 작성 폼과 기록 목록을 좌우로 나누지 않고 위아래로 쌓아서 세로로 펼침
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+// 비로그인 상태: 안내 배지를 조금 더 넓게 표시
+.containerCentered {
+  align-items: center;
+  max-width: 880px;
+}
+
+// 비로그인 안내도 로그인/회원가입 카드와 같은 유리질감으로 표시 (세로 정렬 유지, 폭만 넉넉하게)
+.loginNotice {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 64px 56px 52px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: $card-radius;
+  box-shadow: 0 24px 50px rgba(30, 50, 70, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.noticePhoto {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 172px;
+  height: 172px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px dashed $border;
+  border-radius: 20px;
+  transform: rotate(-3deg);
+
+  // 테이프로 살짝 붙여둔 느낌의 장식
+  &::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 42px;
+    width: 50px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    transform: rotate(-6deg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.noticeText {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.8;
+  color: $muted;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.listHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: $ink;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    color: $muted;
+  }
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.postCard {
+  position: relative;
+  padding: 26px 26px 18px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: $card-radius;
+  box-shadow: 0 20px 45px rgba(30, 50, 70, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fade-in 0.25s ease both;
+}
+
+// 카드 상단 중앙의 집게(클립) 장식
+.cardClip {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 34px;
+  height: 16px;
+  background: linear-gradient(180deg, #d3d8dd, #939ba5);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: translateX(-50%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    width: 18px;
+    height: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    transform: translateX(-50%);
+  }
+}
+
+.cardBody {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-top: 10px;
+
+  @media (max-width: 420px) {
+    grid-template-columns: 96px 1fr;
+  }
+}
+
+// 왼쪽: 선택한 캐릭터가 크게 배치되는 자리 - 테이프로 붙인 사진 느낌
+.cardPhoto {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 116px;
+  height: 116px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  transform: rotate(-3deg);
+  box-shadow: 0 4px 10px rgba(30, 50, 70, 0.08);
+
+  @media (max-width: 420px) {
+    width: 96px;
+    height: 96px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 26px;
+    width: 40px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    transform: rotate(-6deg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.photoPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  color: $muted;
+}
+
+.cardInfo {
+  min-width: 0;
+}
+
+.cardName {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: $ink;
+  word-break: break-word;
+}
+
+.cardDate {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $muted;
+}
+
+.cardDivider {
+  height: 1px;
+  margin: 12px 0;
+  background-image: linear-gradient(90deg, $border 50%, transparent 50%);
+  background-size: 8px 1px;
+}
+
+.cardMessage {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #34495e;
+  word-break: break-word;
+}
+
+.cardBottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed $border;
+}
+
+.ownerActions {
+  display: flex;
+  gap: 8px;
+}
+
+.editBtn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $accent;
+  background: $accent-soft;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(45, 92, 138, 0.2);
+  }
+}
+
+.deleteBtn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #b0546b;
+  background: rgba(224, 108, 133, 0.08);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(224, 108, 133, 0.16);
+  }
+}
+
+.editWrap {
+  margin-bottom: 12px;
+}
+
+.editTextarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: $ink;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+
+  &:focus {
+    border-color: $accent;
+  }
+}
+
+.editActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.saveBtn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: $accent;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+
+  &:hover {
+    background: #244a70;
+  }
+}
+
+.cancelBtn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $muted;
+  background: rgba(30, 50, 70, 0.06);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(30, 50, 70, 0.12);
+  }
+}
+
+.empty {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: $ink;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.8);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pageBtn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $muted;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid $border;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.pageBtnActive {
+  color: #fff;
+  background: $accent;
+  border-color: $accent;
+
+  &:hover {
+    background: $accent;
+  }
+}
