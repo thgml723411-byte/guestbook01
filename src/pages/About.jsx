@@ -24,7 +24,7 @@ const About = () => {
       <section className={styles.gallery}>
         <div className={styles.galleryHead}>
           <span className={styles.eyebrow}>MOVEMENT</span>
-          <h2>여섯 개의 동작, 여섯 개의 빛</h2>
+          <h2>여덟 개의 동작, 여덟 개의 빛</h2>
           <p>같은 어둠 위에서 저마다 다른 빛깔로 움직입니다</p>
         </div>
         <div className={styles.grid}>
