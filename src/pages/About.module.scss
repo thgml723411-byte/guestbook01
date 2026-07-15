@@ -169,9 +169,6 @@ $accent: #7c8cff;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 320px;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
@@ -200,12 +197,15 @@ $accent: #7c8cff;
   pointer-events: none;
 }
 
+// 레터박스(빈 여백) 대신 카드를 꽉 채우되, 손·발이 몰려있는 위쪽은 보존하고
+// 잘리더라도 아래쪽(빈 배경/바닥) 위주로 잘리게 함
 .silhouette {
   position: relative;
   z-index: 1;
-  flex: 1;
   width: 100%;
-  object-fit: contain;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 15%;
 }
 
 .label {
