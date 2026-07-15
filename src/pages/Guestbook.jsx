@@ -209,6 +209,15 @@ const Guestbook = () => {
                 /* 기록이 5개를 넘어가면 페이지 번호로 넘겨볼 수 있게 표시 */
                 totalPages > 1 && (
                   <div className={styles.pagination}>
+                    <button
+                      type='button'
+                      className={styles.pageArrow}
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage((page) => page - 1)}
+                      aria-label='이전 페이지'
+                    >
+                      &lt;
+                    </button>
                     {
                       Array.from({length: totalPages}, (_, i) => i + 1).map((num) => (
                         <button
@@ -221,6 +230,15 @@ const Guestbook = () => {
                         </button>
                       ))
                     }
+                    <button
+                      type='button'
+                      className={styles.pageArrow}
+                      disabled={currentPage === totalPages}
+                      onClick={() => setCurrentPage((page) => page + 1)}
+                      aria-label='다음 페이지'
+                    >
+                      &gt;
+                    </button>
                   </div>
                 )
               }
