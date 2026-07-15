@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Header from './components/Header'
 import Signup from './pages/Signup'
 import styles from './App.module.scss'
+import About from './pages/About'
 
 const App = () => {
   const setUser = useAuthStore((state) => state.setUser)
@@ -33,6 +34,7 @@ const App = () => {
        <Routes>
           {/* 내주소루트이면연결시켜라*/}
           <Route path="/" element={<Home />} />
+           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/guestbook" element={<Guestbook />} />

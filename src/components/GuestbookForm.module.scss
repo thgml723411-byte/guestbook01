@@ -11,7 +11,7 @@ $card-radius: 20px;
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 34px 30px 28px;
+  padding: 28px 26px 24px;
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $card-radius;
@@ -45,7 +45,7 @@ $card-radius: 20px;
   display: grid;
   grid-template-columns: 200px 1fr;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
@@ -96,7 +96,7 @@ $card-radius: 20px;
 .charList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -104,8 +104,8 @@ $card-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 10px 4px;
+  gap: 4px;
+  padding: 8px 4px;
   background: rgba(255, 255, 255, 0.4);
   border: 2px solid transparent;
   border-radius: 14px;
@@ -123,15 +123,16 @@ $card-radius: 20px;
   }
 }
 
+// 원형 대신 둥근 사각형으로 잘라 캐릭터별 배경 그라데이션이 온전히 보이게 함
 .charBtnAvatar {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 62px;
   height: 62px;
-  padding: 6px;
-  background: #fff;
-  border-radius: 50%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(30, 50, 70, 0.12);
 }
 
 .charBtnLabel {
@@ -151,7 +152,7 @@ $card-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-size: 13px;
   font-weight: 600;
   color: $muted;
@@ -179,7 +180,16 @@ $card-radius: 20px;
   }
 
   textarea {
-    min-height: 110px;
+    min-height: 90px;
+  }
+}
+
+// 왼쪽 캐릭터 목록 높이만큼 메세지 입력창이 남는 공간을 자동으로 채우도록
+.messageField {
+  flex: 1;
+
+  textarea {
+    flex: 1;
   }
 }
 
@@ -187,7 +197,7 @@ $card-radius: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .emojiBtn {

@@ -6,7 +6,10 @@ const CharacterAvatar = ({character}) => {
    const characterData = CHARACTERS.find((item)=>item.id === character) //찾으면돌려준다
    if(!characterData) return null //에러메세지못찾으면
   return (
-    <img className={styles.avatar} src = {characterData.src} alt={characterData.title} />
+    <div className={styles.avatarBox} style={{background: characterData.bg}}>
+      <img key={characterData.src} className={styles.avatar} src = {characterData.src} alt={characterData.label}
+        onError={(e)=>{ e.target.style.display = 'none' }} />
+    </div>
   )
 }
  

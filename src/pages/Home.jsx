@@ -3,9 +3,9 @@ import styles from './Home.module.scss'
 
 
 const videos = [
-  { title : "get lost in thought", scr : '/mp4/m4.mp4'},
-  { title : "get lost in thought", scr : '/mp4/m5.mp4'},
+  { title : "get lost in thought", scr : '/mp4/m1.mp4'},
   { title : "get lost in thought", scr : '/mp4/m2.mp4'},
+  { title : "get lost in thought", scr : '/mp4/m3.mp4'},
 ]
 //리턴위에위치해도되지만
 

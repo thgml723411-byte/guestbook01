@@ -32,7 +32,7 @@ const GuestbookForm = ({onAddpost, defaultNickname = ''}) => {
     <div className={styles.formWrap}>
       <form className={styles.form} onSubmit={submitFnc}>
         <span className={styles.formClip} aria-hidden='true' />
-        <h2 className={styles.formTitle}>캐릭터를 선택하고 내용을 적어주세요</h2>
+        <h2 className={styles.formTitle}>마음에 드는 동작을 고르고 방명록을 남겨주세요</h2>
 
         <div className={styles.formBody}>
           {/* 왼쪽: 캐릭터 선택 -> 선택한 캐릭터가 여기 배치됨 */}
@@ -81,7 +81,7 @@ const GuestbookForm = ({onAddpost, defaultNickname = ''}) => {
               }
              </div>
 
-             <label className={styles.field}>
+             <label className={`${styles.field} ${styles.messageField}`}>
                 메세지
                 <textarea type='text' value={message} onChange={(e)=>{
                       setMessage(e.target.value)

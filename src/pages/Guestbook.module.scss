@@ -19,13 +19,13 @@ $card-radius: 20px;
 
 .page {
   min-height: 100vh;
-  padding: 56px 24px 80px;
+  padding: 110px 24px 80px;
   color: $ink;
 
   // 로그인/회원가입 페이지처럼 배경 사진을 그대로 보여주고, 카드 자체의 반투명 유리질감으로 대비를 줌
   // background-attachment: fixed는 헤더의 backdrop-filter가 스크롤 전까지 초기 렌더링에 반영되지 않는
   // 브라우저 버그를 유발해서 scroll로 둠
-  background-image: url('/img/back7.jpg');
+  background-image: url('/img/back10.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
